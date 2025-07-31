@@ -46,3 +46,19 @@ input {
 p {
     margin: 10px;
 }
+/* Animacion de borrado */
+@keyframes borrar{
+    from {
+        opacity: 1;
+        
+    }
+    to {
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+.fade-out {
+    animation: borrar 0.5s forwards;
+}

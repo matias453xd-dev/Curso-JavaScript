@@ -65,7 +65,8 @@ function clickGuardar(){
     borrar.classList.add("borrar");
     // Funcionalidad
     borrar.onclick = function() {
-        this.parentElement.remove();
+        // Tarea va a guardar una referencia al flex-item para poder eliminarlo
+        const tarea = this.parentElement;
         // Solo se restara si la tarea no esta tachada (ya que sino se restara 2 veces, puede quedar en negativo)
         if(textNodo.style.textDecoration === "line-through"){
             actualizarContadores();
@@ -73,7 +74,15 @@ function clickGuardar(){
             tareasPendientes -= 1;
             actualizarContadores();
         }
+        // Animacion de borrado
+        tarea.classList.add("fade-out") //Nombre de la animacion
+        setTimeout(() => {
+            tarea.remove();
+            this.parentElement.remove();
+        }, 500)
     }
+    
+
 
     // Se agregan ambos botones a un div
     const flex_item = document.createElement("DIV");
