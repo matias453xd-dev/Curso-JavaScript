@@ -9,15 +9,18 @@
 <body>
     <div class="flex-container">
         <h2>Agregar tareas</h2>
-        <input type="text" minlength="1" maxlength="40" id="inputText">
+        <input type="text" minlength="1" maxlength="40" id="inputText" placeholder="Escriba la tarea">
         <!-- Al precionar guardar se debe crear un div por debajo donde se muestre el texto y 2 botones para tachar y borrar -->
         <input type="submit" value="Guardar" id="guardar">
         <!-- Estructura basica -->
         <!--<div class="flex-item">tarea 1 <button type="reset" class="tachar">Tachar</button><button type="submit" class="borrar">Borrar</button></div>
             <div class="flex-item">tarea 2 <button type="reset" class="tachar">Tachar</button><button type="submit" class="borrar">Borrar</button></div> -->
-
+        
     </div>
-
+    <!-- Puedo agregar la hora actual -->
+    <div class="delete-container">
+        <button id="borrar-todo">Borrar todo</button>
+    </div>
 
 
     <script src="To-do_List.js"></script>

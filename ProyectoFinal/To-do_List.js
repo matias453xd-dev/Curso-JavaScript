@@ -79,7 +79,7 @@ function clickGuardar(){
         setTimeout(() => {
             tarea.remove();
             this.parentElement.remove();
-        }, 500)
+        }, 200) // El navegador esperará 200 milisegundos antes de eliminar el elemento
     }
     
 
@@ -87,6 +87,13 @@ function clickGuardar(){
     // Se agregan ambos botones a un div
     const flex_item = document.createElement("DIV");
     flex_item.classList.add("flex-item");
+    // ----Animacion de guardado
+    const save = flex_item;
+    save.classList.add("save")
+    setTimeout(() => {
+
+    },300)
+    // ----Animacion de guardado
     flex_item.appendChild(textNodo);
     flex_item.appendChild(tachar);
     flex_item.appendChild(borrar);
@@ -114,6 +121,16 @@ inputText.addEventListener("keydown", function(event) { // Se le agrega un event
     }
 });
 
+// Funcionalidad del boton de borrar todo
+const BorrarTodo = document.getElementById("borrar-todo");
+BorrarTodo.onclick = function(){
+    // Se juntan todas las tareas
+    const tareas = document.querySelectorAll(".flex-item");
+    tareas.forEach(tarea => tarea.remove());
+    tareasPendientes = 0;
+    tareasCompletadas = 0;
+    actualizarContadores();
+}
 
 
 
