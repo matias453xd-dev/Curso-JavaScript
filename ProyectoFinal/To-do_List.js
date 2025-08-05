@@ -128,9 +128,65 @@ BorrarTodo.onclick = function(){
     const tareas = document.querySelectorAll(".flex-item");
     tareas.forEach(tarea => tarea.remove());
     tareasPendientes = 0;
-    tareasCompletadas = 0;
+    // tareasCompletadas = 0;
     actualizarContadores();
 }
 
+// -------Funcionalidad del apartado de ajustes
+const ajustes = document.querySelector(".ajustes");
+const fondo = document.getElementById("color");
+const listaColores = document.getElementById("lista-colores");
 
+ajustes.onclick = function(){
+    // Hacer visible el menu
+    if(menu.style.display == "none"){
+        menu.style.display = "flex";
+    } else {
+        menu.style.display = "none";
+        if(listaColores.style.display == "flex"){
+            listaColores.style.display = "none";
+        }
+    }
+}
+// Con esto se podra cerrar haciendo click fuera del menu
+document.addEventListener('click', function(e) {
+    if (!ajustes.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = "none";
+        listaColores.style.display = "none";
+    }
+});
+
+fondo.onclick = function(){
+    // Hacer visible las opciones de color
+     if(listaColores.style.display == "none"){
+        listaColores.style.display = "flex";
+    } else {
+        listaColores.style.display = "none";
+    }
+}
+// Cambio de fondo
+function CambioDeColor(ClassColor){
+    const body = document.querySelector("body");
+    const contenedor = document.querySelector(".flex-container");
+    const tareas = document.querySelectorAll(".flex-item");
+    const BorrarTodo = document.getElementById("borrar-todo");
+    if(ClassColor == "rojo"){
+        const rojoContenedor = getComputedStyle(document.body).getPropertyValue('--rojo-fondo');
+        const rojoTareas = getComputedStyle(document.body).getPropertyValue('--rojo-tareas');
+
+        body.style.backgroundColor = "beige";
+        contenedor.style.backgroundColor = rojoContenedor;
+        tareas.style.backgroundColor = rojoTareas;
+        BorrarTodo.style.backgroundColor = rgb(235, 205, 37);
+    } else if(ClassColor == "azul"){
+
+    } else {
+
+    }
+}
+// Botones de cambio de fondo
+const botonRojo = document.querySelector(".rojo");
+botonRojo.onclick = function(){
+    CambioDeColor("rojo");
+}
 

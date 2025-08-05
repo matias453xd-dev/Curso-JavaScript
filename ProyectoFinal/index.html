@@ -8,7 +8,23 @@
 </head>
 <body>
     <div class="flex-container">
-        <h2>Agregar tareas</h2>
+        <!-- Ajustes, cambiar el div header por un nav -->
+        <nav class="header">
+            <button class="ajustes">Ajustes</button>
+            <!-- Al presionar el boton se debe mostrar el menu -->
+            <ul id="menu">
+                <!-- Pendiente -->
+                <li class="colores"><a href="#" id="color">Fondos</a>
+                    <ul id="lista-colores">
+                        <li class="rojo"></li>
+                        <li class="azul"></li>
+                        <li class="blanco"></li>
+                    </ul>
+                </li>
+                <!-- Se pueden agregar mas opciones -->
+            </ul>
+        </nav>
+        <h2>Agregar tareas</h2> 
         <input type="text" minlength="1" maxlength="40" id="inputText" placeholder="Escriba la tarea">
         <!-- Al precionar guardar se debe crear un div por debajo donde se muestre el texto y 2 botones para tachar y borrar -->
         <input type="submit" value="Guardar" id="guardar">

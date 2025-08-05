@@ -2,26 +2,35 @@ body {
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
     background-color: beige;
+    --rojo-fondo:#fb5858;
+    --rojo-item:#fc876a;
+    --azul-boton:#48e;
+    --azul-tareas:#6aabeb;
+    --blanco-boton:#ffe3c8;
+    --blanco-tareas:#b5b5b5;
 }
 
 .flex-container {
-    background-color: #fb5858;
+    background-color:var(--rojo-fondo);
     border: 3px solid #333;
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 80vw;
     margin: auto;
     margin-top: 40px;
+    max-width: 70vw;
 }
 /* Donde estan los botones y el texto */
 .flex-item {
-    background-color: #fc876a;
+    background-color: var(--rojo-item);
     display: flex;
     align-items: center;
      /* Distribuye el texto a la izquierda y los botones a la derecha */
     padding: 10px;
     border-bottom: 2px solid #a1a1a1;
+}
+button:hover{
+    box-shadow: 2px 2px 2px black;
 }
 input {
     padding: 5px;
@@ -29,18 +38,18 @@ input {
 }
 /* Boton de tachar */
 .tachar {
-    background-color: #48e;
+    background-color: var(--azul-boton);
     margin-left: auto;
     margin-right: 10px;
 }
 /* Boton borrar */
 .borrar {
-    color: #e48;
+    color: var(--rojo-fondo);
     
 }
 /* Boton guardar */
 #guardar {
-    background-color: #c8c8c8;
+    background-color: var(--blanco-boton);
 }
 /* Texto del input */
 .textNodo {
@@ -59,9 +68,10 @@ p {
     display: flex;
     justify-content: flex-end;
     text-align: center;
-    border: 3px solid #333;
-    width: 80vw;
-    background-color: #fb5858;
+    border: 2px solid #333;
+    background-color: var(--rojo-fondo);
+    
+    max-width: 70vw;
 }
 #borrar-todo {
     padding: 5px;
@@ -98,3 +108,83 @@ p {
 .save { 
     animation: Guardar 0.2s forwards; 
 } 
+
+/* ------SECCION DE AJUSTES */
+.header {
+    text-decoration: none;
+    position: absolute;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #11111151;
+    max-width: auto;
+    max-height: auto;
+}
+
+.ajustes {
+    position: relative;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    border-radius: 0px 5px 5px 0px;
+    background: #eee;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    /* Hacer que se posicione automaticamente */
+    
+}
+/* Apartado de fondos */
+.colores:hover{
+    box-shadow: 1px 1px 1px black;
+}
+#menu {
+    display: flex;
+    display: none;
+    list-style: none;  
+}
+#menu > li > a{
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+#menu li:hover .lista-colores {
+    display: block;
+}
+#lista-colores {
+    /* display: flex; */
+    display: none; 
+    flex-direction: row;
+    list-style: none;
+    width: auto;
+    background-color: #11111163;
+    margin-top: 25px;
+    padding: 5px 0;
+    justify-content: center;
+    gap: 10px;
+    /* Color de fondo */
+}
+#lista-colores > li {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    margin: 5px;
+    border: 1px solid black;
+}
+#lista-colores > li:hover{
+    box-shadow: 2px 2px 2px black;
+    padding: 1px;
+}
+
+/* Colores */
+.rojo {
+    background-color: var(--rojo-fondo);
+}
+.azul {
+    background-color: var(--azul-boton);
+}
+.blanco {
+    background-color: var(--blanco-boton);
+}
