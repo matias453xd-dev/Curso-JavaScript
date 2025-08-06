@@ -137,8 +137,15 @@ p {
     
 }
 /* Apartado de fondos */
+.colores{ 
+    transition: 0.5s ease;
+}
 .colores:hover{
-    box-shadow: 1px 1px 1px black;
+    transform: scale(1.04);
+
+}
+#color {
+    margin-right: 10px;
 }
 #menu {
     display: flex;
@@ -159,7 +166,7 @@ p {
     flex-direction: row;
     list-style: none;
     width: auto;
-    background-color: #11111163;
+    /* background-color: #11111163; */
     margin-top: 25px;
     padding: 5px 0;
     justify-content: center;
@@ -175,7 +182,7 @@ p {
 }
 #lista-colores > li:hover{
     box-shadow: 2px 2px 2px black;
-    padding: 1px;
+    padding: 0.2px;
 }
 
 /* Colores */
@@ -185,6 +192,6 @@ p {
 .azul {
     background-color: var(--azul-boton);
 }
-.blanco {
-    background-color: var(--blanco-boton);
+.negro {
+    background-color: #333;
 }

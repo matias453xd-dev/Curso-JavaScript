@@ -27,7 +27,12 @@ container.appendChild(divTareas);
 function actualizarContadores() {
     pendiente.textContent = "Tareas pendientes: " + tareasPendientes;
     completado.textContent = "Tareas Completadas: " + tareasCompletadas;
+    // Notificación cuando todas las tareas estén completadas
+
 }
+// Variable global que guardara el color de los flex-items
+let colorActualTarea = "";
+let colorBotonTachar = "";
 
 // Funcion que realizara el boton guardar
 function clickGuardar(){
@@ -43,7 +48,9 @@ function clickGuardar(){
     // Boton tachar
     const tachar = document.createElement("BUTTON");
     tachar.textContent = "Tachar";
-    tachar.classList.add("tachar");
+    tachar.classList.add("tachar"); // CLASE BOTON TACHAR
+    tachar.style.backgroundColor = colorBotonTachar;
+
     // Funcionalidad
     tachar.onclick = function() {
     const textNodo = this.parentElement.querySelector(".textNodo");
@@ -62,7 +69,7 @@ function clickGuardar(){
     // Boton borrar
     const borrar = document.createElement("BUTTON");
     borrar.textContent = "Borrar";
-    borrar.classList.add("borrar");
+    borrar.classList.add("borrar"); // CLASE BOTON BORRAR
     // Funcionalidad
     borrar.onclick = function() {
         // Tarea va a guardar una referencia al flex-item para poder eliminarlo
@@ -87,6 +94,7 @@ function clickGuardar(){
     // Se agregan ambos botones a un div
     const flex_item = document.createElement("DIV");
     flex_item.classList.add("flex-item");
+    flex_item.style.backgroundColor = colorActualTarea; // <-- Aplica el color actual
     // ----Animacion de guardado
     const save = flex_item;
     save.classList.add("save")
@@ -168,25 +176,89 @@ fondo.onclick = function(){
 function CambioDeColor(ClassColor){
     const body = document.querySelector("body");
     const contenedor = document.querySelector(".flex-container");
+    // Aqui hay varios elementos
     const tareas = document.querySelectorAll(".flex-item");
+    const tachar = document.querySelectorAll(".tachar");
+    const BorrarContainer = document.querySelector(".delete-container");
     const BorrarTodo = document.getElementById("borrar-todo");
+
     if(ClassColor == "rojo"){
         const rojoContenedor = getComputedStyle(document.body).getPropertyValue('--rojo-fondo');
         const rojoTareas = getComputedStyle(document.body).getPropertyValue('--rojo-tareas');
 
+        // Cambia el color de los items que se agreguen luego
+        colorActualTarea = rojoTareas;
+        // Cuando se creen nuevas tareas el boton tachar conservara su color
+        colorBotonTachar = "#f6913fdf";
+
         body.style.backgroundColor = "beige";
         contenedor.style.backgroundColor = rojoContenedor;
-        tareas.style.backgroundColor = rojoTareas;
-        BorrarTodo.style.backgroundColor = rgb(235, 205, 37);
+        tareas.forEach(tarea => {
+        tarea.style.backgroundColor = rojoTareas;
+        });
+        BorrarContainer.style.backgroundColor = rojoContenedor;
+        BorrarTodo.style.backgroundColor = "rgb(235, 205, 37)";
+        BorrarContainer.style.border = "2px solid #333";
+
+        tachar.forEach(tache => {
+            tache.style.backgroundColor = "#f6913fdf";
+        })
+        // Letras
+        contenedor.style.color = "black";
     } else if(ClassColor == "azul"){
+        const azulContenedor = getComputedStyle(document.body).getPropertyValue('--azul-boton');
+        const azulTareas = getComputedStyle(document.body).getPropertyValue('--azul-tareas');
 
+        colorActualTarea = azulTareas;
+        colorBotonTachar = "#9e24c6df";
+
+        body.style.backgroundColor = "rgba(87, 199, 255, 0.7)";
+        contenedor.style.backgroundColor = azulContenedor;
+        tareas.forEach(tarea => {
+            tarea.style.backgroundColor = azulTareas;
+        });
+        
+        BorrarContainer.style.backgroundColor = azulContenedor;
+        BorrarTodo.style.backgroundColor = "rgba(172, 255, 209, 1)";
+        BorrarContainer.style.border = "2px solid #333";
+        tachar.forEach(tache => {
+            tache.style.backgroundColor = "#9e24c6df";
+        })
+        // Letras
+        contenedor.style.color = "black";
     } else {
+        // Color negro
+        colorActualTarea = "rgba(122,122,122)";
+        colorBotonTachar = "#2e2e2edf";
 
+        body.style.backgroundColor = "rgba(71, 71, 71, 0.92)";
+        contenedor.style.backgroundColor = "#333";
+        tareas.forEach(tarea => {
+            tarea.style.backgroundColor = "rgba(122,122,122)";
+        });
+        
+        // Contenedor de borrado
+        BorrarContainer.style.backgroundColor = "#333";
+        BorrarTodo.style.backgroundColor = "rgba(163, 65, 15, 1)";
+        BorrarContainer.style.border = "2px solid #222";
+        tachar.forEach(tache => {
+            tache.style.backgroundColor = "#2e2e2edf";
+        })
+        // Letras
+        contenedor.style.color = "white";
     }
 }
 // Botones de cambio de fondo
 const botonRojo = document.querySelector(".rojo");
 botonRojo.onclick = function(){
+    console.log("Cambiando a rojo");
     CambioDeColor("rojo");
 }
-
+const botonAzul = document.querySelector(".azul");
+botonAzul.onclick = function(){
+    CambioDeColor("azul");
+}
+const botonNegro = document.querySelector(".negro");
+botonNegro.onclick = function(){
+    CambioDeColor("negro");
+}
