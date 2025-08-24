@@ -33,6 +33,7 @@ function actualizarContadores() {
 // Variable global que guardara el color de los flex-items
 let colorActualTarea = "";
 let colorBotonTachar = "";
+let colorTexto = "";
 
 // Funcion que realizara el boton guardar
 function clickGuardar(){
@@ -50,6 +51,7 @@ function clickGuardar(){
     tachar.textContent = "Tachar";
     tachar.classList.add("tachar"); // CLASE BOTON TACHAR
     tachar.style.backgroundColor = colorBotonTachar;
+    tachar.style.color = colorTexto;
 
     // Funcionalidad
     tachar.onclick = function() {
@@ -179,6 +181,7 @@ function CambioDeColor(ClassColor){
     // Aqui hay varios elementos
     const tareas = document.querySelectorAll(".flex-item");
     const tachar = document.querySelectorAll(".tachar");
+
     const BorrarContainer = document.querySelector(".delete-container");
     const BorrarTodo = document.getElementById("borrar-todo");
 
@@ -190,6 +193,7 @@ function CambioDeColor(ClassColor){
         colorActualTarea = rojoTareas;
         // Cuando se creen nuevas tareas el boton tachar conservara su color
         colorBotonTachar = "#f6913fdf";
+        colorTexto = "black";
 
         body.style.backgroundColor = "beige";
         contenedor.style.backgroundColor = rojoContenedor;
@@ -202,6 +206,7 @@ function CambioDeColor(ClassColor){
 
         tachar.forEach(tache => {
             tache.style.backgroundColor = "#f6913fdf";
+            tache.style.color = "black";
         })
         // Letras
         contenedor.style.color = "black";
@@ -211,6 +216,7 @@ function CambioDeColor(ClassColor){
 
         colorActualTarea = azulTareas;
         colorBotonTachar = "#9e24c6df";
+        colorTexto = "black";
 
         body.style.backgroundColor = "rgba(87, 199, 255, 0.7)";
         contenedor.style.backgroundColor = azulContenedor;
@@ -219,10 +225,11 @@ function CambioDeColor(ClassColor){
         });
         
         BorrarContainer.style.backgroundColor = azulContenedor;
-        BorrarTodo.style.backgroundColor = "rgba(172, 255, 209, 1)";
+        BorrarTodo.style.backgroundColor = "rgba(52, 218, 126, 1)";
         BorrarContainer.style.border = "2px solid #333";
         tachar.forEach(tache => {
             tache.style.backgroundColor = "#9e24c6df";
+            tache.style.color = "black";
         })
         // Letras
         contenedor.style.color = "black";
@@ -230,6 +237,8 @@ function CambioDeColor(ClassColor){
         // Color negro
         colorActualTarea = "rgba(122,122,122)";
         colorBotonTachar = "#2e2e2edf";
+        // Color del texto del boton tachar
+        colorTexto = "#eee";
 
         body.style.backgroundColor = "rgba(71, 71, 71, 0.92)";
         contenedor.style.backgroundColor = "#333";
@@ -243,6 +252,7 @@ function CambioDeColor(ClassColor){
         BorrarContainer.style.border = "2px solid #222";
         tachar.forEach(tache => {
             tache.style.backgroundColor = "#2e2e2edf";
+            tache.style.color = "#eee";
         })
         // Letras
         contenedor.style.color = "white";
