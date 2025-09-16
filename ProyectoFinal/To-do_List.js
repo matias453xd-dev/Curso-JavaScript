@@ -53,6 +53,9 @@ function clickGuardar(){
     tachar.style.backgroundColor = colorBotonTachar;
     tachar.style.color = colorTexto;
 
+    // Efecto de sonido al tachar
+    const sonidoTachar = new Audio("pencil_scribble_9-389258.mp3");
+
     // Funcionalidad
     tachar.onclick = function() {
     const textNodo = this.parentElement.querySelector(".textNodo");
@@ -64,6 +67,8 @@ function clickGuardar(){
         textNodo.style.textDecoration = "line-through";
         tareasCompletadas += 1;
         tareasPendientes -= 1;
+        // Solo sonará si no está tachada
+        sonidoTachar.play();
     }
     actualizarContadores();
     };
@@ -142,10 +147,13 @@ BorrarTodo.onclick = function(){
     actualizarContadores();
 }
 
-// -------Funcionalidad del apartado de ajustes
+// -------Funcionalidad del apartado de ajustes ---------
 const ajustes = document.querySelector(".ajustes");
 const fondo = document.getElementById("color");
 const listaColores = document.getElementById("lista-colores");
+
+const tipografia = document.getElementById("tipografia");
+const listaTipos = document.getElementById("lista-tipos");
 
 ajustes.onclick = function(){
     // Hacer visible el menu
@@ -156,6 +164,10 @@ ajustes.onclick = function(){
         if(listaColores.style.display == "flex"){
             listaColores.style.display = "none";
         }
+        // Cerrar el apartado de tipografia
+        if(listaTipos.style.display == "flex"){
+            listaTipos.style.display = "none";
+        }
     }
 }
 // Con esto se podra cerrar haciendo click fuera del menu
@@ -163,6 +175,7 @@ document.addEventListener('click', function(e) {
     if (!ajustes.contains(e.target) && !menu.contains(e.target)) {
         menu.style.display = "none";
         listaColores.style.display = "none";
+        listaTipos.style.display = "none";
     }
 });
 
@@ -271,4 +284,41 @@ botonAzul.onclick = function(){
 const botonNegro = document.querySelector(".negro");
 botonNegro.onclick = function(){
     CambioDeColor("negro");
+}
+
+// --------- Cambiar de tipografia
+tipografia.onclick = function(){
+    // Hacer visible las opciones de tipografia
+    if(listaTipos.style.display == "none"){
+        console.log("Mostrando tipografia");
+        listaTipos.style.display = "flex";
+        listaTipos.style.flexDirection = "column";
+    } else {
+        console.log("Ocultando tipografia");
+        listaTipos.style.display = "none";
+    }
+}
+function CambioDeTipografia(Tipo){
+    const body = document.querySelector("body");
+    if(Tipo == "TimesNewRoman"){
+        body.style.fontFamily = "Times New Roman";
+    }
+    else if(Tipo == "Arial"){
+        body.style.fontFamily = "Arial";
+    }
+    else {
+        body.style.fontFamily = "Georgia";
+    }
+}
+const botonTimes = document.querySelector(".TimesNewRoman");
+botonTimes.onclick = function(){
+    CambioDeTipografia("TimesNewRoman");
+}
+const botonArial = document.querySelector(".Arial");
+botonArial.onclick = function(){
+    CambioDeTipografia("Arial");
+}
+const botonHelvetica = document.querySelector(".Georgia");
+botonHelvetica.onclick = function(){
+    CambioDeTipografia("Georgia");
 }

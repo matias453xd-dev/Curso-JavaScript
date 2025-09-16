@@ -36,6 +36,9 @@ input {
     padding: 5px;
     border: 1px solid #111;
 }
+#inputText {
+    padding: 6px;
+}
 /* Boton de tachar */
 .tachar {
     background-color: var(--azul-boton);
@@ -117,9 +120,10 @@ p {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #11111151;
+    background-color: #1111117b;
     max-width: auto;
     max-height: auto;
+    border-radius: 10px;
 }
 
 .ajustes {
@@ -148,14 +152,16 @@ p {
     margin-right: 10px;
 }
 #menu {
-    display: flex;
-    display: none;
+    display: none; 
+    gap: 20px;
     list-style: none;  
 }
 #menu > li > a{
     display: block;
     color: white;
     text-decoration: none;
+    /* Orden: top, right, bottom, left */
+    margin: 0 10px 0 10px;
 }
 #menu li:hover .lista-colores {
     display: block;
@@ -194,4 +200,30 @@ p {
 }
 .negro {
     background-color: #333;
+}
+/* Apartado de tipografia */
+#tipografia{ 
+    transition: 0.5s ease;
+    margin-right: 10px;
+}
+#tipografia:hover{
+    transform: scale(1.04);
+}
+#lista-tipos {
+    list-style: none; /* Elimina los puntos o números de la lista */
+    padding: 0;
+    margin: 0; 
+    font-size: 16px; 
+    background-color: #d0d0d0cc;
+    border-radius: 5px;
+    /* Se mantendra oculto hasta que se presione #tipografia */
+    display: none;
+    margin-top: 15px;
+}
+
+#lista-tipos > li {
+    text-decoration: none;
+    margin: 10px;
+    margin-left: 10px;
+    font-family: Hel;
 }
