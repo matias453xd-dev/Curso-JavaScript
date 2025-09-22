@@ -147,7 +147,7 @@ BorrarTodo.onclick = function(){
     actualizarContadores();
 }
 
-// -------Funcionalidad del apartado de ajustes ---------
+// -----------------------------Funcionalidad del apartado de ajustes -------------------------------
 const ajustes = document.querySelector(".ajustes");
 const fondo = document.getElementById("color");
 const listaColores = document.getElementById("lista-colores");
@@ -170,7 +170,7 @@ ajustes.onclick = function(){
         }
     }
 }
-// Con esto se podra cerrar haciendo click fuera del menu
+// Con esto se podra cerrar haciendo click fuera del menu ------------------------------------------
 document.addEventListener('click', function(e) {
     if (!ajustes.contains(e.target) && !menu.contains(e.target)) {
         menu.style.display = "none";
@@ -322,3 +322,21 @@ const botonHelvetica = document.querySelector(".Georgia");
 botonHelvetica.onclick = function(){
     CambioDeTipografia("Georgia");
 }
+
+// Enviar notificaciones de las tareas pendientes
+// Se verifica que las notificaciones esten permitidas
+if (Notification.permission !== "granted") {
+    Notification.requestPermission();
+}
+function enviarNotificacionPendientes() {
+    if (Notification.permission === "granted" && tareasPendientes > 0) {
+        new Notification("To-do List", {
+            body: `Tienes ${tareasPendientes} tarea(s) pendiente(s). ¡No olvides completarlas!`,
+            icon: "Minecraft-creeper-face.jpg" // Opcional: agrega un ícono para la notificación
+        });
+    }
+}
+// Se enviará cada 5 minutos
+setInterval(() => {
+    enviarNotificacionPendientes();
+}, 300000); // 300000 ms = 5 minutos
